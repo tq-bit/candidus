@@ -1,0 +1,73 @@
+{
+	"Show a card grid of posts": "Gönderilerin kart ızgarasını göster",
+	"Show a feed list of posts": "Gönderilerin bir besleme listesini göster",
+	"Load more posts": "Daha fazla içerik yükle",
+
+	"{authorname} didn't publish anything yet": "{authorname} henüz hiçbir şey yayınlamadı",
+	"{authorname} published 1 article": "{authorname} 1 içerik yayınladı",
+	"{authorname} published % articles": "{authorname} % makale yayınladı",
+	"Writing from": "Yazan",
+	"{authorname}'s publications": "{authorname} yayınları",
+
+	"Tags": "Etiketler",
+	"Navigation": "Navigasyon",
+	"Follow {site}": "{site} Takip Edin",
+	"Powered by Ghost & Candidus Theme": "Ghost & Candidus Temasıyla desteklenmektedir",
+
+	"An error has occured": "Bir hata oluştu",
+	"404 - Page not found": "404 - Sayfa bulunamadı",
+	"The page you are looking for does not exist": "Aradığınız sayfa bulunamadı",
+	"To the previous page": "Önceki sayfaya",
+	"To the front page": "Ön sayfaya",
+
+	"Latest publications": "Son yayınlar",
+	"Members only post": "Yalnızca üyelere özel içerik",
+	"PaidMembers only post": "Yalnızca Ücretli Üyeler için içerik",
+
+	"Close annoucement bar": "Duyuru çubuğunu kapat",
+
+	"Welcome back": "Tekrar hoş geldiniz",
+	"Sign up": "Kayıt ol",
+	"Log in": "Giriş yap",
+	"Sign out": "Çıkış yap",
+	"Email Address": "E-posta adresi",
+	"Enter your email address": "E-posta adresinizi girin",
+	"Username": "Kullanıcı adı",
+	"Enter your username": "Kullanıcı adınızı girin",
+	"Login": "Giriş yap",
+	"Not signed up yet": "Henüz kayıt olmadınız",
+	"Create an account": "Hesap oluştur",
+	"Already a member": "Zaten üye misiniz?",
+	"Logging you in": "Giriş yapıyorsunuz",
+	"Sending Email": "E-posta gönderiliyor",
+	"Signing you up": "Sizi kaydediyorum",
+	"Login link sent! Check your mailbox": "Giriş bağlantısı gönderildi! Posta kutunuzu kontrol edin",
+	"Signup successful! Check your mailbox": "Kayıt başarıyla gerçekleşti! Posta kutunuzu kontrol edin",
+	"Newsletter": "Haber Bülteni",
+	"Subscribe": "Abone ol",
+	"Subscribe Button": "Abone Ol Butonu",
+	"Coming soon": "Yakında gelecek",
+	"Topics": "Konular",
+
+	"Featured": "Öne çıkan",
+	"1 min read": "1 dk okuma",
+	"% min read": "% dk okuma",
+	"Table of contents": "İçindekiler",
+	"show/hide": "göster/gizle",
+	"This post is only available to subscribers": "Bu içerik yalnızca üyelere açıktır",
+	"Share this article": "Bu içeriği paylaş",
+	"Share this article on Facebook": "Bu içeriği Facebook'ta paylaş",
+	"Share this article on Twitter": "Bu içeriği Twitter'da paylaş",
+	"Share this article on Linkedin": "Bu içeriği Linkedin'de paylaş",
+	"Share this article on Reddit": "Bu içeriği Reddit'te paylaş",
+
+	"Tagged with": "Etiketlendi",
+
+	"Toggle sidebar menu": "Kenar çubuğu menüsünü aç/kapat",
+	"Chat with this article (opens ChatGPT in a new tab)": "Bu içerik hakkında sohbet edin (ChatGPT'yi yeni bir sekmede açar)",
+	"Toggle search menu": "Arama menüsünü aç/kapat",
+	"Toggle dark theme": "Koyu ve açık tema arasında geçiş yap",
+
+	"Nothing bookmarked yet": "Henüz yer imlerine eklenmiş bir şey yok",
+	"Related articles": "İlgili içerikler"
+}
