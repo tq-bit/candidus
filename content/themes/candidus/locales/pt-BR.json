@@ -6,7 +6,7 @@
 	"{authorname} didn't publish anything yet": "{authorname} não publicou nada ainda",
 	"{authorname} published 1 article": "{authorname} publicou 1 artigo",
 	"{authorname} published % articles": "{authorname} publicou % artigos",
-	"Writing from": "Escrito por",
+	"Writing from": "Escreve em",
 	"{authorname}'s publications": "Publicações de {authorname}",
 
 	"Tags": "Tags",
@@ -84,9 +84,8 @@
 	"Continue reading": "Continuar a leitura",
 	"by": "por",
 	"Copy selected text to the clipboard": "Copiar texto selecionado",
-	"Bookmark this paragraph": "Destacar esse parágrafago",
+	"Bookmark this paragraph": "Destacar esse parágrafo",
 	"Tweet this quote": "Tuitar essa citação",
 	"Show details": "Exibir Detalhes",
-	"Join the discussion": "Participe da conversa",
-	"Topics": "Tópicos"
+	"Join the discussion": "Participe da conversa"
 }
