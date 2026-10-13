@@ -30,8 +30,21 @@ export default class PostReadingProgressBar extends Control implements ControlSt
 	 */
 	public init() {
 		if (this.valid) {
+			this.positionProgressBar();
+			window.addEventListener('resize', () => this.positionProgressBar());
 			this.showProgressBar();
 			this.monitorProgressBar();
+		}
+	}
+
+	/**
+	 * Places the bar directly below the navbar, whose height varies with
+	 * the viewport.
+	 */
+	private positionProgressBar() {
+		const navbar = this.$query('#navbar__container');
+		if (navbar) {
+			this.postReadingBar.style.top = `${navbar.getBoundingClientRect().height}px`;
 		}
 	}
 

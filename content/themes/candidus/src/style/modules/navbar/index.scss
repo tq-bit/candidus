@@ -7,8 +7,6 @@
 	background-color: rgba(var(--color-surface), 0.75);
 	backdrop-filter: blur(16px);
 	-webkit-backdrop-filter: blur(16px);
-	border: none;
-	border-bottom: 1px solid rgba(var(--color-primary), 0.16);
 	box-shadow: 0 8px 32px var(--color-shadow);
 
 	&__logo {
