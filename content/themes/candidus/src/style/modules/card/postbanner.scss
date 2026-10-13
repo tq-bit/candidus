@@ -9,13 +9,17 @@ $banner-title-transition: width 0.75s cubic-bezier(0.5, 0, 0.5, 1);
 }
 
 @mixin postbanner-title-desktop {
-	line-height: $line-height-xxl;
+	line-height: 1.15;
 	font-size: $text-max;
 }
 
 .postbanner {
 	@include post-base;
-	background-color: transparent;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
 
 	&:hover {
 		.postbanner__title::after {
@@ -38,7 +42,7 @@ $banner-title-transition: width 0.75s cubic-bezier(0.5, 0, 0.5, 1);
 	}
 
 	&__body {
-		@include theme-colors-just-text;
+		color: rgb(var(--color-text));
 		@include xl-screen {
 			@include postbanner-body-desktop;
 		}
@@ -49,22 +53,23 @@ $banner-title-transition: width 0.75s cubic-bezier(0.5, 0, 0.5, 1);
 	}
 
 	&__title {
-		@include theme-colors-just-text;
+		color: rgb(var(--color-text));
 		font-size: $text-xl;
-		line-height: $line-height-xl;
+		line-height: 1.25;
 		position: relative;
-		text-transform: uppercase;
 
 		&::after {
-			@include rounded-md;
+			@include rounded-sm;
 			transition: $banner-title-transition;
 			content: '';
-			height: 4px;
+			height: 3px;
 			width: 0;
 			position: absolute;
 			bottom: -0.5rem;
 			left: 0;
-			background-color: var(--color-secondary);
+			background: linear-gradient(90deg,
+					rgb(var(--color-primary)),
+					rgb(var(--color-secondary)));
 		}
 		@include xl-screen {
 			@include postbanner-title-desktop;
@@ -75,7 +80,7 @@ $banner-title-transition: width 0.75s cubic-bezier(0.5, 0, 0.5, 1);
 	}
 
 	&__content {
-		@include theme-colors-just-text;
+		color: rgb(var(--color-text));
 		line-height: $line-height-md;
 		font-size: $text-lg;
 	}
@@ -87,16 +92,20 @@ $banner-title-transition: width 0.75s cubic-bezier(0.5, 0, 0.5, 1);
 	&__bullet {
 		@include rounded-max;
 		transition: all 0.75s;
-		height: 0.75rem;
-		width: 0.75rem;
+		height: 0.5rem;
+		width: 0.5rem;
 		margin: 0.25rem;
 		margin-right: 1.5rem;
 		float: right;
 		clear: right;
-		background-color: transparentize($color-grey, 0.25);
+		background-color: rgb(var(--color-border-muted));
+
 		&--active {
-			height: 1.3rem;
-			background-color: var(--ghost-accent-color);
+			height: 0.5rem;
+			width: 1.5rem;
+			background: linear-gradient(90deg,
+					rgb(var(--color-primary)),
+					rgb(var(--color-secondary)));
 		}
 	}
 }

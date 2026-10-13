@@ -1,44 +1,67 @@
 .sidebar {
-	@include theme-colors;
+	@include rounded-md;
 	position: fixed;
-	top: 0;
-	right: 0;
-	height: 100%;
-	z-index: 10;
-	height: 100%;
+	top: 1rem;
+	right: 1rem;
+	height: calc(100% - 2rem);
+	z-index: 20;
 	width: $sidebar-size;
-	transition: transform $animation-speed-base;
-	padding-top: $navbar-size;
-	opacity: 0.98;
+	transition: transform $animation-speed-base cubic-bezier(0.4, 0, 0.2, 1);
+	padding: 1.5rem 1rem;
+	background: rgba(var(--color-surface), 0.97);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(var(--color-primary), 0.16);
+	box-shadow: 0 8px 32px var(--color-shadow);
 
 	&--hidden {
-		transform: translateX($sidebar-size);
+		transform: translateX(calc($sidebar-size + 2rem));
 	}
 
 	&__navigation {
 		list-style: none;
 		overflow-y: auto;
 		max-height: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+
 		&__item {
+			font-family: var(--gh-font-heading, var(--font-heading));
 			font-weight: 600;
 			font-size: $text-lg;
-			text-transform: uppercase;
-			transition: all calc($animation-speed-base * 0.5);
-			&:hover {
-				color: $color-white;
-				background-color: var(--color-secondary);
-			}
+			border-radius: $border-radius-sm;
+
 			a {
+				@include underline-gradient;
 				display: flex;
 				align-items: center;
 				color: inherit;
 				text-decoration: none;
-				font-family: var(--gh-font-heading, Oswald, sans-serif);
+				font-family: inherit;
+			}
+
+			&:hover {
+				background-color: rgba(var(--color-primary), 0.08);
+			}
+
+			// The item of the page the user is currently on
+			&.nav-current {
+				color: rgb(var(--color-primary)) !important;
+
+				a,
+				a::after {
+					color: rgb(var(--color-primary)) !important;
+				}
+
+				a::after {
+					transform: scaleX(1);
+				}
 			}
 		}
 	}
 }
 
 .nav-current {
-	color: var(--color-secondary);
+	color: rgb(var(--color-primary)) !important;
 }

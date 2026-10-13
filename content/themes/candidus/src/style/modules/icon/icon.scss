@@ -14,11 +14,11 @@
 		transition: all $animation-speed-base;
 	}
 	&--white {
-		color: $color-white !important;
-		fill: $color-white !important;
+		color: rgb(var(--color-text)) !important;
+		fill: rgb(var(--color-text)) !important;
 	}
 	&--primary {
-		color: var(--color-primary) !important;
-		fill: var(--color-primary) !important;
+		color: rgb(var(--color-primary)) !important;
+		fill: rgb(var(--color-primary)) !important;
 	}
 }

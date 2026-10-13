@@ -1,21 +1,21 @@
 .active-text {
-	fill: var(--color-secondary) !important;
-	color: var(--color-secondary) !important;
+	fill: rgb(var(--color-secondary)) !important;
+	color: rgb(var(--color-secondary)) !important;
 	& * {
-		fill: var(--color-secondary) !important;
+		fill: rgb(var(--color-secondary)) !important;
 	}
 }
 
 .active-bg {
-	background-color: var(--color-secondary) !important;
+	background-color: rgb(var(--color-secondary)) !important;
 }
 
 .active {
-	color: var(--color-primary) !important;
-	fill: var(--color-primary) !important;
+	color: rgb(var(--color-primary)) !important;
+	fill: rgb(var(--color-primary)) !important;
 	& * {
-		color: var(--color-primary) !important;
-		fill: var(--color-primary) !important;
+		color: rgb(var(--color-primary)) !important;
+		fill: rgb(var(--color-primary)) !important;
 	}
-	background-color: var(--color-secondary) !important;
+	background-color: rgba(var(--color-primary), 0.12) !important;
 }

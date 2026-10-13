@@ -6,7 +6,8 @@
 	h4,
 	h5,
 	h6 {
-		margin-top: $text-md;
+		margin-top: 2rem;
+		margin-bottom: 0.75rem;
 		position: relative;
 		z-index: 0;
 		cursor: pointer;
@@ -14,30 +15,31 @@
 
 	p {
 		font-size: $text-md;
+		line-height: 1.7;
+		margin: 1rem 0;
 		@include xl-screen {
 			font-size: $text-lg;
 		}
 		@include xxl-screen {
 			font-size: $text-lg;
 		}
-		margin: $text-xxs 0;
 	}
 
 	figcaption,
 	figcaption>* {
-		font-size: $text-sm !important;
+		font-size: $text-xs !important;
 		margin-bottom: $text-lg;
 		text-align: center;
+		color: rgb(var(--color-text-muted));
 	}
 
 	details {
-		@include rounded-md;
-		@include theme-colors;
+		@include card-surface;
 		margin-bottom: $text-md;
 		padding: $col-padding;
 
 		summary {
-			font-family: var(--gh-font-heading, Oswald, sans-serif);
+			font-family: var(--gh-font-heading, var(--font-heading));
 			font-size: $text-lg;
 		}
 	}
@@ -45,7 +47,6 @@
 	code,
 	pre {
 		@include rounded-sm;
-		@include theme-colors;
 		font-family: 'Inconsolata' !important;
 		font-size: $text-sm;
 	}
@@ -54,6 +55,8 @@
 		overflow-x: auto;
 		padding: 1rem;
 		margin: $text-sm 0;
+		background-color: rgb(var(--color-surface-raised));
+		border: 1px solid rgb(var(--color-border-muted));
 
 		code {
 			padding: 0;
@@ -62,16 +65,18 @@
 
 	code {
 		padding: 0.15rem 0.3rem;
+		background-color: rgba(var(--color-primary), 0.12);
 	}
 
 	a:not(.kg-bookmark-container, .kg-file-card-container) {
-		@include underline-color-secondary;
+		@include underline-gradient;
 	}
 
 	ul:not(.socialbar),
 	ol {
 		padding-left: 1.25rem;
 		font-size: $text-md;
+		line-height: 1.7;
 		margin: $text-sm 0;
 		@include xl-screen {
 			font-size: $text-lg;
@@ -91,17 +96,24 @@
 		margin: $text-sm 0;
 		border-collapse: collapse;
 		overflow-y: auto;
+		border: 1px solid rgb(var(--color-border-muted));
 	}
 
 	th {
 		padding: $text-xs;
-		background-color: var(--color-primary);
-		color: $color-white;
-		border-bottom: 2px solid var(--color-primary);
+		background-color: rgb(var(--color-surface-raised));
+		color: rgb(var(--color-text));
+		font-family: var(--gh-font-heading, var(--font-heading));
+		border-bottom: 1px solid rgb(var(--color-border-muted));
 	}
 
 	td {
-		@include theme-colors;
 		padding: $text-xs;
+		color: rgb(var(--color-text));
+		border-bottom: 1px solid rgb(var(--color-border-muted));
+
+		&:last-child {
+			border-bottom: none;
+		}
 	}
 }

@@ -44,6 +44,7 @@ export default class SyntaxHighlighter extends PluginBase implements ControlStru
     const currentTheme = this.getTheme(options);
     this.$log(`Loading theme stylesheet for ${options.type}-${currentTheme}.css`)
     const path = `${this.stylesheet.dataset['thirdparty_root'].replace(CANDIDUS_PRISM_PLACEHOLDER, `${options.type}-${currentTheme}.css`)}`
+    this.script.async = true;
     this.script.src = this.script.dataset['src'];
     this.stylesheet.setAttribute('href', path);
     this.stylesheet.dataset['thirdparty_root'] = null;

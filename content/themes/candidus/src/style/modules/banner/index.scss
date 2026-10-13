@@ -12,9 +12,14 @@
 		bottom: 0;
 		left: 0;
 		&--themed {
-			background-color: var(--light-bg-color);
+			@include rounded-top-md;
+			background: var(--card-background);
+			backdrop-filter: blur(14px);
+			-webkit-backdrop-filter: blur(14px);
+			border: 1px solid rgba(var(--color-primary), 0.16);
+			border-bottom: none;
 			opacity: 0.98;
-			color: var(--light-text-color);
+			color: rgb(var(--color-text));
 		}
 	}
 
@@ -24,9 +29,26 @@
 
 	&__description {
 		font-size: $text-lg;
+		color: rgb(var(--color-text-muted));
 	}
 
 	&__image {
 		@include rounded-md;
 	}
+}
+
+// Featured posts slider pagination (Swiper)
+.swiper-pagination-bullet {
+	opacity: 0.4;
+	background: rgb(var(--color-text));
+	transition: opacity $animation-speed-fast ease-out, width $animation-speed-fast ease-out;
+}
+
+.swiper-pagination-bullet-active {
+	opacity: 1;
+	width: 1.5rem;
+	border-radius: 9999px;
+	background: linear-gradient(90deg,
+			rgb(var(--color-primary)),
+			rgb(var(--color-secondary))) !important;
 }

@@ -1,9 +1,5 @@
 @import './variables.scss';
 
-$collection-border: 0.1rem solid transparentize($color: $color-grey,
-		$amount: 0.5,
-	);
-
 @mixin container {
 	width: 100%;
 	margin: auto;
@@ -49,21 +45,33 @@ $collection-border: 0.1rem solid transparentize($color: $color-grey,
 	border-radius: $border-radius-sm;
 }
 
+// Glass surface sheet (see the AppSheet component of the design system)
+@mixin card-surface {
+	border-radius: $border-radius-md;
+	background: var(--card-background);
+	box-shadow: 0 10px 40px var(--color-shadow);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	border: 1px solid rgba(var(--color-primary), 0.16);
+	color: rgb(var(--color-text));
+	fill: rgb(var(--color-text));
+}
+
 @mixin card-base {
-	@include rounded-md;
-	background-color: var(--color-primary);
+	@include card-surface;
 
 	&__header {
 		@include rounded-top-md;
 	}
 
 	&__title {
+		font-family: var(--gh-font-heading, var(--font-heading));
 		font-size: $text-lg;
-		color: $color-white;
+		color: inherit;
 	}
 
 	&__body {
-		color: $color-white;
+		color: inherit;
 		font-size: $text-md;
 	}
 
@@ -78,60 +86,121 @@ $collection-border: 0.1rem solid transparentize($color: $color-grey,
 	position: relative;
 
 	&__author {
-		font-family: var(--gh-font-heading, Oswald, sans-serif);
+		font-family: var(--gh-font-heading, var(--font-heading));
 		display: flex;
 		position: relative;
 		align-items: center;
 	}
 
 	&__authordetails {
-		color: $color-white;
+		color: inherit;
 		display: inline-block;
 	}
 
 	&__authorname {
-		font-family: var(--gh-font-heading, Oswald, sans-serif);
+		font-family: var(--gh-font-heading, var(--font-heading));
 		font-size: $text-sm;
 	}
 
 	&__created {
-		font-family: var(--gh-font-heading, Oswald, sans-serif);
+		font-family: var(--gh-font-heading, var(--font-heading));
 		font-size: $text-xs;
+		color: rgb(var(--color-text-muted));
 	}
 
+	// Tag pill with hover shine sweep (see the AppTag component)
 	&__tag {
-		font-family: var(--gh-font-heading, Oswald, sans-serif);
-		font-weight: 600;
-		font-size: $text-sm;
-		background-color: var(--ghost-accent-color);
-		color: var(--color-primary);
-		text-align: center;
-		display: inline-block;
+		font-family: var(--gh-font-heading, var(--font-heading));
+		display: inline-flex;
+		align-items: center;
+		position: relative;
+		overflow: hidden;
+		font-size: $text-xs;
+		font-weight: 500;
+		border-radius: 9999px;
+		background-color: rgba(var(--color-primary), 0.12);
+		border: 1px solid rgba(var(--color-primary), 0.25);
+		padding: 0.2rem 0.65rem;
+		color: rgb(var(--color-text));
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 60%;
+			height: 100%;
+			pointer-events: none;
+			background: linear-gradient(100deg, transparent, var(--color-shine), transparent);
+			transform: translateX(-150%) skewX(-15deg);
+		}
+
+		&:hover::before {
+			animation: tag-shine 0.7s ease-out;
+		}
 
 		&--fixed {
-			@include rounded-top-sm;
 			position: absolute;
 			bottom: 0;
 			right: 0;
 			min-width: $post-tag-min-width;
+			justify-content: center;
 		}
 
 		&--default {
-			@include rounded-sm;
+			justify-content: center;
 		}
 	}
 }
 
+// Ghost (icon) button. Primary call-to-actions use the gradient variant
+// via the 'btn--primary' class (see the AppButton component).
 @mixin button {
-	@include theme-colors-just-text;
 	cursor: pointer;
+	font-family: var(--gh-font-heading, var(--font-heading));
 	font-weight: 600;
 	border: none;
-	border-radius: $border-radius-sm;
-	padding: 0.35rem;
+	border-radius: 9999px;
+	padding: 0.35rem 0.75rem;
 	display: inline-block;
 	font-size: $text-md;
 	background-color: transparent;
+	color: rgb(var(--color-text));
+	transition: transform $animation-speed-fast ease-out, box-shadow 0.25s ease-out,
+		filter 0.25s ease-out, border-color 0.25s ease-out, background-color 0.25s ease-out,
+		color 0.25s ease-out;
+
+	&:hover {
+		background-color: rgba(var(--color-primary), 0.12);
+	}
+}
+
+// Primary gradient call-to-action (see the AppButton component)
+@mixin button-primary {
+	color: rgb(var(--color-on-accent)) !important;
+	background: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(var(--color-secondary)) 100%);
+	box-shadow: 0 4px 18px var(--color-btn-shadow);
+
+	&:hover {
+		filter: brightness(1.12);
+		transform: translateY(-1px);
+		box-shadow: 0 8px 28px var(--color-btn-shadow-hover);
+	}
+}
+
+// Muted outline button (see the AppButton component, type "muted")
+@mixin button-muted {
+	background: transparent;
+	border: 1px solid rgb(var(--color-border-strong));
+	box-shadow: none;
+	color: rgb(var(--color-text));
+
+	&:hover {
+		filter: none;
+		border-color: rgba(var(--color-primary), 0.6);
+		background-color: rgba(var(--color-primary), 0.12);
+		box-shadow: none;
+	}
 }
 
 @mixin bar {
@@ -143,6 +212,7 @@ $collection-border: 0.1rem solid transparentize($color: $color-grey,
 
 @mixin input {
 	outline: none;
+	font-family: var(--gh-font-body, var(--font-body));
 	font-size: $text-sm;
 	border: none;
 	width: 100%;
@@ -179,10 +249,14 @@ $collection-border: 0.1rem solid transparentize($color: $color-grey,
 	}
 }
 
+// Emphasized text rendered with the animated primary-secondary gradient
+// (see the gradient text of the design system)
 @mixin featured-text {
+	@include gradient-text;
+	@include gradient-text-animated;
 	text-transform: uppercase;
-	font-family: var(--gh-font-heading, Oswald, sans-serif);
-	color: var(--color-secondary);
+	letter-spacing: 0.05em;
+	font-family: var(--gh-font-heading, var(--font-heading));
 }
 
 // Mixins to round elements' borders
@@ -225,27 +299,77 @@ $collection-border: 0.1rem solid transparentize($color: $color-grey,
 	border-radius: 9999px;
 }
 
-@mixin underline-color-secondary {
+// Gradient text (see the gradient-text mixin of the design system)
+@mixin gradient-text {
+	background: linear-gradient(45deg, rgb(var(--color-primary)) 0%, rgb(var(--color-secondary)) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+@mixin gradient-text-animated {
+	animation: moveGradient 5s linear infinite;
+	background-size: 200% 200%;
+}
+
+@keyframes moveGradient {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	25% {
+		background-position: 50% 100%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	75% {
+		background-position: 50% 0%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes tag-shine {
+	from {
+		transform: translateX(-150%) skewX(-15deg);
+	}
+
+	to {
+		transform: translateX(250%) skewX(-15deg);
+	}
+}
+
+// Link with a gradient underline that expands on hover
+// (see the AppLink component, variant "underline")
+@mixin underline-gradient {
 	position: relative;
-	z-index: 0;
-	transition: all calc($animation-speed-base * 0.5) cubic-bezier(0.5, 0, 0.5, 1);
+	text-decoration: none;
+	transition: color $animation-speed-fast ease-out;
 
 	&::after {
-		@include rounded-sm;
-		z-index: -1;
-		transition: height calc($animation-speed-base * 0.5) cubic-bezier(0.5, 0, 0.5, 1);
 		content: '';
-		height: 1px;
-		width: 100%;
 		position: absolute;
-		bottom: 0;
 		left: 0;
-		background-color: var(--color-secondary);
+		bottom: -2px;
+		width: 100%;
+		height: 1.5px;
+		border-radius: 9999px;
+		background: linear-gradient(90deg, rgb(var(--color-primary)), rgb(var(--color-secondary)));
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 0.25s ease-out;
 	}
 
 	&:hover {
+		color: rgb(var(--color-primary));
+
 		&::after {
-			height: 100%;
+			transform: scaleX(1);
 		}
 	}
 }

@@ -59,11 +59,11 @@ See https://swiperjs.com/ for more information on Swiper
                 {{/if}}
 
                 <div class="authorbanner__authordetails">
-                  <h4 class="postcard__authorname">
+                  <p class="postcard__authorname">
                     {{name}}
-                  </h4>
+                  </p>
                   {{/primary_author}}
-                  <time class="postbanner__created" datetime="{{date format=" YYYY-MM-DD"}}">{{date}} - {{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</time>
+                  <time class="postbanner__created" datetime="{{date format="YYYY-MM-DD"}}">{{date}} - {{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</time>
                 </div>
               </div>
             </a>

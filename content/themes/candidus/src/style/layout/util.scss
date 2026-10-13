@@ -114,7 +114,7 @@
 }
 
 .text--secondary {
-	color: var(--color-secondary);
+	color: rgb(var(--color-secondary));
 }
 
 .text--success {
@@ -151,7 +151,7 @@
 }
 
 .text--underlined {
-	@include underline-color-secondary;
+	@include underline-gradient;
 }
 
 // Font size modifiers

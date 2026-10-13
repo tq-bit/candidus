@@ -58,21 +58,16 @@ export default class ThemeControl {
 	}
 
 	/**
-	 * @desc Get the current user theme, either from local storage or from
-	 *       `prefers-color-scheme` media query. Localstorage has a higher
-	 *       priority
+	 * @desc Get the current user theme from local storage. The design
+	 *       system's default look is the dark theme, so it is used
+	 *       until a user preference has been stored.
 	 */
 	private getUserTheme(): ThemeType {
 		const activeTheme: ThemeType = localStorage.getItem('user-theme') as ThemeType;
-		const hasDarkPreference: boolean = window.matchMedia('(prefers-color-scheme: dark)').matches;
 		if (activeTheme) {
 			return activeTheme;
 		}
-		if (hasDarkPreference) {
-			return 'dark-theme';
-		} else {
-			return 'light-theme';
-		}
+		return 'dark-theme';
 	}
 
 	/**

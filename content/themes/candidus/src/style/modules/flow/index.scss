@@ -1,0 +1,35 @@
+.flow {
+	position: fixed;
+	inset: 0;
+	z-index: -999;
+	overflow: hidden;
+	pointer-events: none;
+
+	&__canvas {
+		position: absolute;
+		inset: 0;
+		opacity: 0.9;
+	}
+
+	&__glow {
+		position: absolute;
+		border-radius: 9999px;
+		filter: blur(90px);
+
+		&--primary {
+			width: 55vw;
+			height: 55vw;
+			top: -25vw;
+			right: -18vw;
+			background: var(--color-glow-primary);
+		}
+
+		&--secondary {
+			width: 45vw;
+			height: 45vw;
+			bottom: -20vw;
+			left: -15vw;
+			background: var(--color-glow-secondary);
+		}
+	}
+}

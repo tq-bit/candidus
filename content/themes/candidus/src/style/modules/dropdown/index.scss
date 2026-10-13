@@ -10,6 +10,8 @@
 		}
 		&--theme {
 			@include theme-colors;
+			border: 1px solid rgba(var(--color-primary), 0.16);
+			box-shadow: 0 8px 32px var(--color-shadow);
 		}
 		@include rounded-sm;
 		display: flex;
@@ -22,7 +24,7 @@
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 		&__title {
 			@include text-truncate;
-			font-family: var(--gh-font-heading, Oswald, sans-serif);
+			font-family: var(--gh-font-heading, var(--font-heading));
 			font-size: $text-sm;
 		}
 		&__text {

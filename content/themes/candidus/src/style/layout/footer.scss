@@ -1,7 +1,10 @@
 .footer {
-	@include theme-colors;
+	background: rgba(var(--color-surface), 0.6);
+	border-top: 1px solid rgba(var(--color-primary), 0.16);
+
 	&__heading {
-		font-size: $text-lg;
+		font-size: $text-md;
+		color: rgb(var(--color-text-muted));
 	}
 	&__list {
 		@include collection;
@@ -9,13 +12,16 @@
 
 	&__listitem {
 		* {
-			text-transform: uppercase;
 			font-weight: 400;
-			font-family: var(--gh-font-heading, Oswald, sans-serif);
 			display: flex;
 			align-items: center;
 			color: inherit;
 			text-decoration: none;
+			transition: color $animation-speed-fast ease-out;
+		}
+
+		a:hover * {
+			color: rgb(var(--color-primary));
 		}
 	}
 
@@ -23,5 +29,14 @@
 		text-align: center;
 		margin: auto;
 		display: block;
+		color: rgb(var(--color-text-muted));
+
+		a {
+			color: inherit;
+
+			&:hover {
+				color: rgb(var(--color-primary));
+			}
+		}
 	}
 }

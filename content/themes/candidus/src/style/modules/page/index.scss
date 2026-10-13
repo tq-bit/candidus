@@ -11,12 +11,14 @@
 	&__content {
 		display: flex;
 		flex-direction: column;
+		max-width: 48rem;
+		margin-inline: auto;
 	}
 
 	&__abstract {
-		@include theme-colors-just-text;
-		font-family: var(--gh-font-heading, Oswald, sans-serif);
 		font-size: $text-lg !important;
+		line-height: 1.6;
+		color: rgb(var(--color-text-muted));
 
 		p {
 			font-size: $text-sm;
@@ -24,8 +26,8 @@
 	}
 
 	&__toc {
-		@include rounded-md;
-		@include theme-colors;
+		@include card-surface;
+		box-shadow: 0 4px 16px var(--color-shadow);
 
 		&__header {
 			position: relative;
@@ -40,8 +42,22 @@
 
 		&__item {
 			cursor: pointer;
-			font-family: var(--gh-font-heading, Oswald, sans-serif);
+			font-family: var(--gh-font-heading, var(--font-heading));
 			font-size: $text-md;
+			transition: color $animation-speed-fast ease-out;
+
+			&:hover {
+				color: rgb(var(--color-primary));
+			}
 		}
+	}
+
+	// The table of contents list opens inside its card - avoid nested borders
+	.page__toc .dropdown__drawer--theme {
+		background: transparent !important;
+		border: none;
+		box-shadow: none;
+		color: rgb(var(--color-text)) !important;
+		fill: rgb(var(--color-text)) !important;
 	}
 }

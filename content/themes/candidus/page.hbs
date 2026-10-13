@@ -10,11 +10,11 @@ Includes markup for the default post - page.
 }}
 
 {{#contentFor "styles"}}
-<link id="prism__stylesheet" rel="stylesheet" type="text/css" data-thirdparty_root='{{asset "built/thirdparty/prism/candidus-prism-placeholder"}}'>
+<link id="prism__stylesheet" rel="stylesheet" type="text/css" href="#" data-thirdparty_root='{{asset "built/thirdparty/prism/candidus-prism-placeholder"}}'>
 {{/contentFor}}
 
 {{#contentFor "scripts"}}
-<script id="prism__script" async data-src='{{asset "built/thirdparty/prism/prism.js"}}'></script>
+<script id="prism__script" data-src='{{asset "built/thirdparty/prism/prism.js"}}'></script>
 <script async src='{{asset "built/page.bundle.js"}}'></script>
 {{/contentFor}}
 

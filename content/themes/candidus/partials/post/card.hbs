@@ -1,8 +1,8 @@
-<article class='postcard px-2 pt-2'>
+<article class='postcard p-4'>
 	<a href='{{url}}'>
 
 		{{#if showHeader}}
-		<header class='postcard__header mb-1'>
+		<div class='postcard__header mb-1'>
 
 			{{#if feature_image}}
 			<img loading='lazy' class='image--wide rounded--md' src='{{img_url feature_image}}' alt='{{title}} {{t "by"}} {{primary_author.name}}' />
@@ -12,7 +12,7 @@
 			<img loading='lazy' class='image--wide rounded--md ' src='{{img_url @site.cover_image}}' alt='{{title}} {{t "by"}} {{primary_author.name}}' />
 
 			{{/if}}
-		</header>
+		</div>
 		{{/if}}
 		<div class="postcard__bar">
 
@@ -66,11 +66,11 @@
 				<img loading='lazy' class='image--rounded--xs mr-1 bg-white' src='{{asset "built/images/user.png"}}' alt='{{name}}' />
 				{{/if}}
 				<div class='postcard__authordetails'>
-					<h4 class='postcard__authorname'>
+					<p class='postcard__authorname'>
 						{{name}}
-					</h4>
+					</p>
 					{{/primary_author}}
-					<time class='postcard__created' datetime='{{date format='DD MMMM YYYY'}}'>
+					<time class='postcard__created' datetime='{{date format='YYYY-MM-DD'}}'>
 						{{date format="DD MMMM YYYY"}}
 					</time>
 				</div>

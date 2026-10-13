@@ -1,9 +1,11 @@
 import '../style/index.scss';
 
+import FlowBackground from '../scripts/plugins/FlowBackground';
 import PostListControl from '../scripts/modules/posts/PostListControl';
 import TextClipper from '../scripts/modules/text/TextClipper';
 import PostLoaderControl from '../scripts/modules/posts/PostLoaderControl';
 
+const flowBackground = new FlowBackground();
 const postListControl = new PostListControl({
 	gridButton: '#grid__button',
 	feedButton: '#feed__button',
@@ -25,3 +27,4 @@ postFeedExcerptClipper.truncate();
 
 postListControl.init();
 postLoaderControl.init();
+flowBackground.init();
