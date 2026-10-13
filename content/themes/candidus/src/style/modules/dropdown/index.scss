@@ -7,11 +7,15 @@
 	&__drawer {
 		&--absolute {
 			position: absolute;
+
+			// The dropdown is hidden entirely until its toggle button
+			// is activated. A collapsed (max-height: 0) drawer would
+			// otherwise still paint its border and shadow as a stray
+			// line below the toggle button
+			visibility: hidden;
 		}
 		&--theme {
 			@include theme-colors;
-			border: 1px solid rgba(var(--color-primary), 0.16);
-			box-shadow: 0 8px 32px var(--color-shadow);
 		}
 		@include rounded-sm;
 		display: flex;
@@ -19,7 +23,7 @@
 		flex-direction: column;
 		right: 0;
 		max-height: 0;
-		transition: max-height $animation-speed-base;
+		transition: max-height $animation-speed-base, visibility $animation-speed-base;
 		overflow: hidden;
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 		&__title {
@@ -36,5 +40,14 @@
 			display: block;
 			max-width: 24rem;
 		}
+	}
+
+	// Decorations and visibility are applied only while the toggle
+	// button is active, i.e. while the drawer is open. "visibility"
+	// stays visible for the duration of the closing transition
+	button.active + &__drawer {
+		visibility: visible;
+		border: 1px solid rgba(var(--color-primary), 0.16);
+		box-shadow: 0 8px 32px var(--color-shadow);
 	}
 }
