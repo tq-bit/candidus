@@ -1,12 +1,15 @@
 .navbar {
-	@include dark-theme-colors;
-	@include flex-center-items;
 	position: sticky;
 	top: 0;
-	left: 0;
-	right: 0;
-	height: $navbar-size;
 	z-index: 15;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	background-color: rgba(var(--color-surface), 0.75);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: none;
+	border-bottom: 1px solid rgba(var(--color-primary), 0.16);
+	box-shadow: 0 8px 32px var(--color-shadow);
 
 	&__logo {
 		height: 40px;
@@ -23,13 +26,15 @@
 		a {
 			height: 40px;
 			width: 40px;
+			display: flex;
+			align-items: center;
 		}
 	}
 
 	&__title {
-		font-family: var(--gh-font-heading, Oswald, sans-serif);
+		font-family: var(--gh-font-heading, var(--font-heading));
 		font-weight: 600;
-		font-size: $text-xl;
+		font-size: $text-lg;
 	}
 
 	&__toolbar {
@@ -41,15 +46,30 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
+		gap: 0.25rem;
 
 		li {
 			display: inline-block;
+		}
+
+		.btn {
+			@include rounded-max;
+			width: 2.5rem;
+			height: 2.5rem;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&:hover {
+				background-color: rgba(var(--color-primary), 0.12);
+			}
 		}
 	}
 }
 
 @include xs-screen {
 	.navbar__title {
-		font-size: $text-lg;
+		font-size: $text-md;
 	}
 }

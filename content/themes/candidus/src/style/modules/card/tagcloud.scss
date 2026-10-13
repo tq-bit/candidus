@@ -1,8 +1,6 @@
 .tagcloud {
   @include card-base;
   width: 100%;
-  background-color: var(--color-primary);
-  color: $color-white;
 
   &__header {
     text-align: center;
@@ -14,19 +12,46 @@
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 0.5rem;
+    justify-content: center;
 
+    // Tag pill with hover shine sweep (see the AppTag component)
     &__item {
-      display: inline-block;
-      border: 1px solid $color-white;
-      flex-grow: 1;
+      display: inline-flex;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(var(--color-primary), 0.25);
+      background-color: rgba(var(--color-primary), 0.12);
       text-align: center;
-      border-radius: 0.25rem;
-      color: $color-white;
-      font-weight: 600;
-      transition: all calc($animation-speed-base/2);
+      border-radius: 9999px;
+      font-weight: 500;
+      font-size: $text-xs;
+      color: rgb(var(--color-text));
+      transition: color $animation-speed-fast ease-out, border-color $animation-speed-fast ease-out;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60%;
+        height: 100%;
+        pointer-events: none;
+        background: linear-gradient(100deg, transparent, var(--color-shine), transparent);
+        transform: translateX(-150%) skewX(-15deg);
+      }
+
+      &:hover {
+        border-color: rgba(var(--color-primary), 0.5);
+        color: rgb(var(--color-primary));
+
+        &::before {
+          animation: tag-shine 0.7s ease-out;
+        }
+      }
+
       a {
-        color: $color-white !important;
+        color: inherit !important;
         text-decoration: none;
       }
     }

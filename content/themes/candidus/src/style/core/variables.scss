@@ -7,20 +7,31 @@ $sm-screen-size: 767px;
 $xs-screen-size: 575px;
 $xxs-screen-size: 375px;
 
-// Color variables
-$color-primary: #3f4d63;
-$color-secondary: #f7c59f;
-$color-success: #00FF00;
-$color-warning: orange;
-$color-error: #FF0000;
-$color-black: #212121;
-$color-white: #f9f9f9;
-$color-light-white: #fefefe;
-$color-grey: #3a3b3d;
-$color-dark-grey: #242527;
-$focus-outline-color: #4A90E2;
+// Container size variables
+$xxl-container-size: 1280px;
+$xl-container-size: 1024px;
+$lg-container-size: 1024px;
+$md-container-size: 768px;
+$sm-container-size: 567px;
+$xs-container-size: 320px;
+
+// Themeable colors live as CSS custom properties (see state/themes.scss).
+// These SCSS aliases map the theme's variable names onto them.
+$color-primary: var(--color-primary-solid);
+$color-secondary: var(--color-secondary-solid);
+$color-black: rgb(var(--color-text));
+$color-white: rgb(var(--color-on-accent));
+$color-light-white: rgb(var(--color-text-muted));
+$color-grey: rgb(var(--color-border-muted));
+$color-dark-grey: rgb(var(--color-surface-raised));
+$focus-outline-color: rgb(var(--color-primary));
 $error-color: #D0021B;
 $error-bg-color: #FFF6F6;
+
+// Literal (non-themeable) state colors
+$color-success: #22C55E;
+$color-warning: #F59E0B;
+$color-error: #EF4444;
 
 // Modifier variables:
 $modifier-xxs: '--xxs';
@@ -37,14 +48,14 @@ $type-error: '--error';
 $type-white: '--white';
 
 // Text sizes
-$text-xxs: 0.5em;
-$text-xs: 0.85em;
+$text-xxs: 0.75em;
+$text-xs: 0.875em;
 $text-sm: 1em;
-$text-md: 1.25em;
-$text-lg: 1.5em;
-$text-xl: 1.75em;
-$text-xxl: 2em;
-$text-max: 2.5em;
+$text-md: 1.075em;
+$text-lg: 1.125em;
+$text-xl: 1.25em;
+$text-xxl: 1.75em;
+$text-max: 2.25em;
 
 // Line heights
 $line-height-xs: 1.5rem;
@@ -57,16 +68,16 @@ $line-height-xxl: 4rem;
 // Grid variables
 $container-width: 95%;
 $col-padding: 1rem;
-$container-max-width: $xxl-screen-size;
+$container-max-width: $xxl-container-size;
 $col-sizes: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
 
 // Size utility variables
 $gap-sizes: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
 
 // Border variables
-$border-radius-sm: 0.25rem;
-$border-radius-md: 0.75rem;
-$border-radius-lg: 1.5rem;
+$border-radius-sm: 0.5rem;
+$border-radius-md: 1rem;
+$border-radius-lg: 2rem;
 
 // Postcard & feed variables
 $post-banner-height-sm: 15rem;
@@ -79,8 +90,9 @@ $post-tag-min-width: 6rem;
 
 // Module variables
 $sidebar-size: 20rem;
-$navbar-size: 3.5rem;
+$navbar-size: 4rem;
 $animation-speed-base: 0.5s;
+$animation-speed-fast: 0.2s;
 $image-max-height: 20rem;
 $banner-max-height: 28rem;
 

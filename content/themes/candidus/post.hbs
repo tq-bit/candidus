@@ -11,14 +11,14 @@ Includes markup for the default post - page.
 
 
 {{#contentFor "styles"}}
-<link id="prism__stylesheet" rel="stylesheet" type="text/css" data-thirdparty_root='{{asset "built/thirdparty/prism/candidus-prism-placeholder"}}'>
+<link id="prism__stylesheet" rel="stylesheet" type="text/css" href="#" data-thirdparty_root='{{asset "built/thirdparty/prism/candidus-prism-placeholder"}}'>
 {{#if @custom.enable_table_of_contents}}
 <link rel="stylesheet" type="text/css" href='{{asset "built/tableOfContents.css"}}'>
 {{/if}}
 {{/contentFor}}
 
 {{#contentFor "scripts"}}
-<script async id="prism__script" data-src='{{asset "built/thirdparty/prism/prism.js"}}'></script>
+<script id="prism__script" data-src='{{asset "built/thirdparty/prism/prism.js"}}'></script>
 <script async src='{{asset "built/page.bundle.js"}}'></script>
 {{/contentFor}}
 
@@ -60,7 +60,7 @@ Includes markup for the default post - page.
                         <svg id="toc__toggle" class='icon page__toc__toggle' width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden="true">
                             <path d='M10.5858 6.34317L12 4.92896L19.0711 12L12 19.0711L10.5858 17.6569L16.2427 12L10.5858 6.34317Z' fill='currentColor'></path>
                         </svg>
-                        <h2 id="toc__heading" class="h3">{{t "Table of contents"}}</h2>
+                        <span id="toc__heading" class="h3">{{t "Table of contents"}}</span>
                     </div>
                     {{!-- Ordered List element with improved accessibility --}}
                     <ol id="toc__list" tabindex="-1" class="dropdown__drawer dropdown__drawer--theme" role="list" aria-labelledby="toc__heading"></ol>
@@ -70,9 +70,9 @@ Includes markup for the default post - page.
 
 
 
-                <main id="post__container" class="page mb-2">
+                <article id="post__container" class="page mb-2">
                     <div class="page__content">{{content}}</div>
-                </main>
+                </article>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 col-xl-2 col-xxl-2"></div>
         </main>
@@ -101,7 +101,7 @@ Includes markup for the default post - page.
         <div class="row my-2">
             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 col-xl-2 col-xxl-2"></div>
             <section class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-8 col-xxl-8">
-                {{comments title=(t "Join the discussion")}}
+                {{comments title=(t "Join the discussion") mode="dark"}}
             </section>
             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 col-xl-2 col-xxl-2"></div>
         </div>

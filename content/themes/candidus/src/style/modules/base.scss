@@ -5,12 +5,53 @@
 }
 
 *:not(code, pre, code span) {
-	font-family: var(--gh-font-body, 'EB Garamond', 'serif');
+	font-family: var(--gh-font-body, var(--font-body));
 }
 
 html {
-	@include dark-theme-colors;
 	overflow-x: hidden;
+	scroll-behavior: smooth;
+}
+
+/* The "color-scheme" property is deliberately NOT set: Chrome paints
+   same-origin "srcdoc" iframes (Ghost's portal, search and comments) with
+   an opaque white canvas when the parent page declares a color scheme.
+   All form controls of this theme are custom-styled, so it is not needed. */
+
+::selection {
+	background: var(--color-selection);
+	color: rgb(var(--color-on-accent));
+	-webkit-text-fill-color: rgb(var(--color-on-accent));
+}
+
+body {
+	background:
+		radial-gradient(1100px 700px at 85% -10%, var(--color-glow-primary), transparent 60%),
+		radial-gradient(900px 600px at -10% 110%, var(--color-glow-secondary), transparent 60%),
+		rgb(var(--color-bg));
+	background-attachment: fixed;
+	color: rgb(var(--color-text));
+	fill: rgb(var(--color-text));
+	-webkit-font-smoothing: antialiased;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: rgb(var(--color-bg));
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgb(var(--color-border-muted));
+	border-radius: 9999px;
+	border: 2px solid rgb(var(--color-bg));
+
+	&:hover {
+		background: rgb(var(--color-border-strong));
+	}
 }
 
 h1,
@@ -29,11 +70,9 @@ h5 > *,
 h5 > * > *,
 h6,
 h6 > *,
-h6 > * > *,
-blockquote,
-blockquote > *,
-blockquote > * > * {
-	font-family: var(--gh-font-heading, Oswald, sans-serif) !important;
+h6 > * > * {
+	font-family: var(--gh-font-heading, var(--font-heading)) !important;
+	letter-spacing: -0.02em;
 }
 
 h1 {
@@ -49,49 +88,70 @@ h3,
 h3 > * {
 	font-size: $text-xl;
 }
+
 h4,
 h4 > * {
 	font-size: $text-lg;
 }
 
-h5 {
+h5,
+h5 > * {
 	font-size: $text-md;
-	text-transform: uppercase;
 }
 
-h6 {
+h6,
+h6 > * {
+	font-size: $text-xs;
+}
+
+p {
 	font-size: $text-md;
+	line-height: 1.6;
+	color: rgb(var(--color-text));
 }
 
 blockquote {
-	@include rounded-sm;
-	@include theme-colors;
+	@include card-surface;
 
 	position: relative;
-	padding: 1.5rem 1.5rem 1.5rem 3rem;
-	border-left: 4px solid var(--color-secondary);
-	margin: $text-lg 0;
-	font-size: $text-md !important;
+	padding: 1.5rem 1.5rem 1.5rem 2rem;
+	border-left: 3px solid transparent;
+	border-image: linear-gradient(180deg,
+			rgb(var(--color-primary)),
+			rgb(var(--color-secondary))) 1;
+	margin: 2rem 0;
+	font-size: $text-lg !important;
+	font-style: normal;
 
 	&::before {
 		content: '“';
 		position: absolute;
 		top: -0.75rem;
 		left: 0.5rem;
-		font-size: 5rem;
-		opacity: 0.5;
+		font-size: 4rem;
+		opacity: 0.3;
+		background: linear-gradient(45deg, rgb(var(--color-primary)), rgb(var(--color-secondary)));
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 	}
 }
 
 hr {
-	margin: 1rem auto;
-	width: 80%;
-	opacity: 0.5;
+	margin: 2.5rem auto;
+	width: 100%;
+	border: 0.5px solid rgb(var(--color-border-muted));
+	opacity: 1;
 }
 
 a:not(#annoucement-bar-container a, .tagcloud__list a, a.skip-link) {
-	@include theme-colors-just-text;
+	color: rgb(var(--color-text));
 	text-decoration: none;
+	transition: color $animation-speed-fast ease-out;
+
+	&:hover {
+		color: rgb(var(--color-primary));
+	}
 }
 
 label {

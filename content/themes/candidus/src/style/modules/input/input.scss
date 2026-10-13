@@ -6,22 +6,32 @@
 	&--white {
 		@include input;
 		@include rounded-sm;
-		background-color: $color-white;
-		color: $color-black;
+		background-color: transparent;
+		color: rgb(var(--color-text));
+
+		&:focus {
+			@include form-focus;
+		}
 	}
 
 	&__group {
 		@include flex-center-items;
-		@include rounded-sm;
+		@include rounded-max;
+		border: 1px solid rgb(var(--color-border-muted));
+		padding: 0.15rem 0.15rem 0.15rem 1rem;
 
 		&--white {
-			background-color: $color-white;
-			color: $color-black;
+			background-color: rgb(var(--color-surface-raised));
+			color: rgb(var(--color-text));
+
+			.icon {
+				color: rgb(var(--color-text-muted));
+			}
 		}
 	}
 
 	&__label {
-		font-family: var(--gh-font-heading, Oswald, sans-serif);
+		font-family: var(--gh-font-heading, var(--font-heading));
 		font-size: $text-md;
 	}
 }

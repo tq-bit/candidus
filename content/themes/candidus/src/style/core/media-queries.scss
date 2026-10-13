@@ -41,11 +41,11 @@
 }
 
 @mixin focus-outline {
-  outline: 3px solid $focus-outline-color;
+  outline: 3px solid rgb(var(--color-primary));
   outline-offset: 2px;
 }
 
 @mixin form-focus {
   @include focus-outline;
-  box-shadow: 0 0 0 3px rgba($focus-outline-color, 0.25);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.25);
 }

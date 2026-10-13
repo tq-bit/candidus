@@ -4,6 +4,14 @@
 	justify-content: space-between;
 	flex-direction: column;
 	min-width: 100%;
+	overflow: hidden;
+	transition: border-color 0.3s ease-out, box-shadow 0.3s ease-out;
+
+	&:hover {
+		border-color: rgba(var(--color-primary), 0.32);
+		box-shadow: 0 14px 48px var(--color-shadow-strong), 0 0 24px rgba(var(--color-primary), 0.1);
+	}
+
 	@include xxl-screen {
 		max-width: 50vw;
 	}
@@ -17,11 +25,32 @@
 		position: relative;
 		height: auto;
 		width: 100%;
+
+		// Gradient fade towards the card body (see the AppCard component)
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			background: linear-gradient(180deg,
+					rgba(var(--color-bg), 0) 60%,
+					rgba(var(--color-bg), 0.55) 100%);
+		}
 	}
 	&__title {
 		width: 100%;
 		bottom: 0;
 		left: 0;
+		color: inherit;
+		transition: color $animation-speed-fast ease-out;
+
+		&:hover {
+			color: rgb(var(--color-primary));
+		}
+	}
+	&__body {
+		color: rgb(var(--color-text-muted));
+		line-height: 1.6;
 	}
 	&__bar {
 		@include bar;
@@ -29,5 +58,19 @@
 
 	&__featured {
 		@include featured-text;
+	}
+
+	// The footer places the author and date opposite of the post's tag
+	// to avoid overlap, independent of the card's width
+	&__footer {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 0.75rem;
+	}
+
+	&__tag--fixed {
+		position: relative;
 	}
 }

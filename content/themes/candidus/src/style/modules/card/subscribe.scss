@@ -1,16 +1,13 @@
-$subscribe-separator-arrow-lg: polygon(50% 100%, 35% -2.5%, 65% -2.5%);
-$subscribe-separator-arrow-sm: polygon(50% 100%, 40% -2.5%, 60% -2.5%);
 $subscribe-form-states: (
-	'loading': var(--color-primary),
+	'loading': rgb(var(--color-primary)),
 	'error': $color-error,
 	'success': $color-success,
 );
 
 .subscribe {
 	@include card-base;
+	@include rounded-lg;
 	width: 100%;
-	background-color: var(--color-primary);
-	color: $color-white;
 
 	&__wrapper {
 		position: relative;
@@ -27,11 +24,11 @@ $subscribe-form-states: (
 	}
 
 	&__image {
-		@include card-base;
+		@include card-surface;
 	}
 
 	&__background {
-		@include card-base;
+		@include card-surface;
 		&--transparent {
 			opacity: 0.9;
 		}
@@ -40,18 +37,35 @@ $subscribe-form-states: (
 	&__card {
 		position: absolute;
 		background-color: transparent;
-		color: $color-white;
+		color: rgb(var(--color-text));
 	}
 
 	&__text {
 		font-size: $text-md;
+		color: rgb(var(--color-text-muted));
 	}
 
 	&--block {
 		width: 100%;
-		background-color: var(--color-primary);
-		color: $color-white;
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		backdrop-filter: none;
+		-webkit-backdrop-filter: none;
+		border-top: 1px solid rgba(var(--color-primary), 0.16);
+		border-radius: 0;
+
+		.subscribe__header h3 {
+			@include gradient-text;
+		}
+
+		// Match the submit button's size to the adjacent input field
+		.btn {
+			padding: 0.75rem 1.75rem;
+			font-size: $text-md;
+		}
 	}
+
 	&__header {
 		text-align: center;
 	}

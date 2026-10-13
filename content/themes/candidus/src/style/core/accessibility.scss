@@ -17,8 +17,10 @@ a.skip-link {
     }
 }
 
-// Focus Styles
-:focus {
+// Focus Styles. ":focus-visible" keeps the outline for keyboard navigation
+// while avoiding outlines on programmatic focus, e.g. the first sidebar
+// navigation item that receives focus whenever the sidebar opens.
+:focus-visible {
     @include focus-outline;
 }
 

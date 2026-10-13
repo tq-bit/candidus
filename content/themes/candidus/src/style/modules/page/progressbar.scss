@@ -7,13 +7,22 @@
 	height: 3.5px;
 	z-index: 5;
 	opacity: 0;
+	background: transparent;
 	transition: opacity $animation-speed-base;
 }
 
+progress.progressbar[value]::-moz-progress-bar {
+	background: linear-gradient(90deg,
+			rgb(var(--color-primary)),
+			rgb(var(--color-secondary)));
+}
+
 progress.progressbar[value]::-webkit-progress-bar {
-	@include theme-colors;
+	background: transparent;
 }
 
 progress.progressbar[value]::-webkit-progress-value {
-	background-color: var(--color-secondary);
+	background: linear-gradient(90deg,
+			rgb(var(--color-primary)),
+			rgb(var(--color-secondary)));
 }

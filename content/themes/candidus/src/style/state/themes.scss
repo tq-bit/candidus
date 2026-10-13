@@ -1,23 +1,79 @@
-:root {
-	--light-bg-color: #{$color-light-white};
-	--light-text-color: #{$color-dark-grey};
-	--bg-color: #{$color-white};
-	--text-color: #{$color-black};
-	--dark-bg-color: #{$color-light-white};
-	--dark-text-color: #{$color-dark-grey};
+// Theme tokens. All colors that change per theme are CSS custom properties.
+// Triplets ("r, g, b") allow alpha variations via rgba(var(--token), a).
+// The theme classes ("light-theme" / "dark-theme") are set on the root
+// element by ThemeControl. Dark is the default look of the design system.
 
-	--color-primary: #{$color-primary};
-	--color-secondary: #{$color-secondary};
+:root,
+:root.dark-theme {
+	--color-bg: 5, 8, 16;
+	--color-surface: 11, 16, 27;
+	--color-surface-raised: 17, 24, 39;
+	--color-border-muted: 35, 44, 64;
+	--color-border-strong: 58, 69, 92;
+	--color-text: 238, 243, 250;
+	--color-text-muted: 150, 162, 181;
+	--color-primary: 64, 156, 255;
+	--color-secondary: 178, 122, 255;
+	--color-on-accent: 255, 255, 255;
+	--canvas-primary: 64, 156, 255;
+	--canvas-secondary: 178, 122, 255;
+	--color-shadow: rgba(3, 7, 15, 0.45);
+	--color-shadow-strong: rgba(3, 7, 15, 0.6);
+	--color-btn-shadow: rgba(64, 156, 255, 0.3);
+	--color-btn-shadow-hover: rgba(64, 156, 255, 0.45);
+	--color-glow-primary: rgba(64, 156, 255, 0.06);
+	--color-glow-secondary: rgba(178, 122, 255, 0.05);
+	--color-selection: rgba(64, 156, 255, 0.35);
+	--color-shine: rgba(255, 255, 255, 0.35);
+	--card-background: linear-gradient(180deg,
+			rgba(var(--color-primary), 0.04),
+			rgba(var(--color-surface), 0.6) 35%);
+
+	// Candidus theme mixin contracts
+	--bg-color: rgb(var(--color-bg));
+	--text-color: rgb(var(--color-text));
+	--light-bg-color: rgb(var(--color-surface));
+	--light-text-color: rgb(var(--color-text));
+	--dark-bg-color: rgba(var(--color-surface), 0.75);
+	--dark-text-color: rgb(var(--color-text));
+
+	--color-primary-solid: rgb(var(--color-primary));
+	--color-secondary-solid: rgb(var(--color-secondary));
 }
 
-:root.dark-theme {
-	// color-scheme: dark;
-	--light-bg-color: #{$color-dark-grey};
-	--light-text-color: #{$color-light-white};
-	--bg-color: #{$color-grey};
-	--text-color: #{$color-white};
-	--dark-bg-color: #{$color-dark-grey};
-	--dark-text-color: #{$color-white};
+:root.light-theme {
+	--color-bg: 245, 248, 252;
+	--color-surface: 255, 255, 255;
+	--color-surface-raised: 241, 245, 249;
+	--color-border-muted: 226, 232, 240;
+	--color-border-strong: 203, 213, 225;
+	--color-text: 15, 23, 42;
+	--color-text-muted: 100, 116, 139;
+	--color-primary: 37, 99, 235;
+	--color-secondary: 124, 58, 237;
+	--color-on-accent: 255, 255, 255;
+	--canvas-primary: 37, 99, 235;
+	--canvas-secondary: 124, 58, 237;
+	--color-shadow: rgba(15, 23, 42, 0.12);
+	--color-shadow-strong: rgba(15, 23, 42, 0.2);
+	--color-btn-shadow: rgba(37, 99, 235, 0.3);
+	--color-btn-shadow-hover: rgba(37, 99, 235, 0.45);
+	--color-glow-primary: rgba(37, 99, 235, 0.08);
+	--color-glow-secondary: rgba(124, 58, 237, 0.06);
+	--color-selection: rgba(37, 99, 235, 0.25);
+	--color-shine: rgba(255, 255, 255, 0.6);
+	// Flat card surfaces - no gradients inside cards in the light theme
+	--card-background: rgba(var(--color-surface), 0.88);
+
+	--bg-color: rgb(var(--color-bg));
+	--text-color: rgb(var(--color-text));
+	--light-bg-color: rgb(var(--color-surface-raised));
+	--light-text-color: rgb(var(--color-text));
+	--dark-bg-color: rgba(var(--color-surface), 0.75);
+	--dark-text-color: rgb(var(--color-text));
+
+	--color-primary-solid: rgb(var(--color-primary));
+	--color-secondary-solid: rgb(var(--color-secondary));
 }
 
 @function theme-color($for) {

@@ -1,7 +1,20 @@
 .btn {
 	@include button;
+
+	@each $modifier, $size in $button-modifiers {
+		&#{$modifier} {
+			padding: calc($size * 0.4) calc($size * 1.25);
+			font-size: $size;
+		}
+	}
+
+	// Large call-to-actions, e.g. the subscription form's submit button,
+	// must be at least as tall as the surrounding input fields
+	&--lg {
+		padding: 0.75rem 1.75rem;
+	}
+
 	&--rounded {
-		@include button;
 		@include rounded-max;
 	}
 
@@ -12,59 +25,42 @@
 	}
 
 	&--wider {
-		padding-left: 1.35rem;
-		padding-right: 1.35rem;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
 	}
 
 	&--block {
 		width: 100%;
-		display: block;
+		display: flex;
+		justify-content: center;
 	}
 
+	// Gradient call-to-action (see the AppButton component, type "primary")
 	&--primary {
-		color: $color-white !important;
-		background-color: var(--color-primary);
+		@include button-primary;
+
 		&--outline {
-			background-color: transparent;
-			color: var(--color-primary) !important;
-			border-color: var(--color-primary) !important;
+			@include button-muted;
 		}
 	}
 
 	&--white {
-		color: $color-primary !important;
-		background-color: $color-white;
-		&--outline {
-			border: 2px solid $color-white !important;
-			background-color: transparent;
-			color: $color-white !important;
-			transition: all calc($animation-speed-base/2);
+		@include button-primary;
 
-			&:hover {
-				background-color: $color-white;
-				color: var(--color-primary);
-			}
+		&--outline {
+			@include button-primary;
 		}
 	}
 
 	&--accent {
-		background-color: var(--ghost-accent-color);
+		@include button-primary;
+
 		&--outline {
-			background-color: transparent;
-			color: var(--ghost-accent-color);
-			border-color: var(--ghost-accent-color) !important;
+			@include button-muted;
 		}
 	}
 
 	&[disabled] {
 		filter: grayscale(50%);
-	}
-
-	@each $modifier, $size in $button-modifiers {
-		&#{$modifier} {
-			border: calc($size * 0.12) solid transparent;
-			padding: calc($size * 0.35) calc($size);
-			font-size: $size;
-		}
 	}
 }

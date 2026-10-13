@@ -18,15 +18,12 @@ It's width defaults to 100%, therefor a layout wrapper is required.
       <div class="row">
         <div class="col-sm-12 col-md-1 col-lg-2 col-xl-3 col-xxl-3"></div>
         <div class="col-sm-12 col-md-7 col-lg-6 col-xl-4 col-xxl-4">
-          <label class='input__label hidden' for='subscribe' aria-hidden='true'>
+          <label class='input__label hidden' for='subscribe'>
             {{t "Enter your email address"}}
           </label>
           <div class='input__group input__group--white mb-2'>
             <input title="{{t "Enter your email address"}}" id='subscribe' class='input--white' placeholder="{{t "Enter your email address" }}" name='subscribe' type='email' data-members-email
               required />
-            <div class='mr-1 mt-1'>
-              {{> "icons/arrow-right"}}
-            </div>
           </div>
         </div>
         <div class="col-sm-12 col-md-3 col-lg-2 col-xl-2 col-xxl-2">
@@ -79,15 +76,12 @@ It's width defaults to 100%, therefor a layout wrapper is required.
     {{#if @site.members_enabled}}
     <form class="subscribe__form" data-members-form="subscribe">
       <div class="subscribe__body px-2 pb-2 pt-1">
-        <label class='input__label hidden' for='subscribe' aria-hidden='true'>
+        <label class='input__label hidden' for='subscribe'>
           {{t "Enter your email address"}}
         </label>
         <div class='input__group input__group--white'>
           <input title="{{t "Enter your email address"}}" id='subscribe' class='input--white' placeholder="{{t "Enter your email address" }}" name='subscribe' type='email' data-members-email
             required />
-          <div class='mr-1 mt-1'>
-            {{> "icons/arrow-right"}}
-          </div>
         </div>
         <input class="btn btn--lg btn--block btn--white--outline mt-2" value="{{t "Subscribe"}}" type="submit" aria-label="{{t "Subscribe Button" }}">
       </div>

@@ -2,6 +2,37 @@
 	@include post-base;
 	align-items: center;
 	margin-bottom: 2rem;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+	border-radius: $border-radius-sm;
+	overflow: hidden;
+	transition: background-color $animation-speed-fast ease-out;
+
+	&:hover {
+		background-color: rgba(var(--color-primary), 0.08);
+
+		.postfeed__title {
+			color: rgb(var(--color-primary));
+		}
+	}
+
+	&:not(:last-child) {
+		border-bottom: 1px solid rgb(var(--color-border-muted)) !important;
+		border-radius: 0;
+	}
+
+	&__title {
+		color: inherit;
+		transition: color $animation-speed-fast ease-out;
+	}
+
+	&__body {
+		color: rgb(var(--color-text-muted));
+	}
+
 	&__content {
 		display: flex;
 	}

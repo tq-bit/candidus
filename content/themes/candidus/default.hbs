@@ -13,7 +13,7 @@
   Load styles. Fonts are preloaded and switched out once they're available to avoid
   blocking the main execution thread.
   --}}
-  <link rel="preload" as="font" href='{{asset "built/shared.css"}}' onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href='{{asset "built/shared.css"}}' onload="this.onload=null;this.rel='stylesheet'">
   <link rel='stylesheet' type='text/css' href='{{asset "built/index.css"}}'>
   {{#if @custom.enable_bookmarks}}
   <link rel='stylesheet' type='text/css' href='{{asset "built/bookmarks.css"}}'>
