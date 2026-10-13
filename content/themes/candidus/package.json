@@ -3,7 +3,7 @@
 	"sideEffects": false,
 	"description": "An approachable and minimalistic blogging theme for Ghost",
 	"demo": "https://candidus.q-bit.me",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"engines": {
 		"ghost": ">=5.0.0"
 	},
