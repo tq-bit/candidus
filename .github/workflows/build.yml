@@ -20,6 +20,8 @@ jobs:
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
+          cache: npm
+          cache-dependency-path: content/themes/candidus/package-lock.json
 
       - name: Auto tag
         id: autotag
@@ -30,13 +32,57 @@ jobs:
           strategy: package
           root: content/themes/candidus
 
-      - name: Build ZIP file
+      - name: Build theme
         run: |
           cd content/themes/candidus
-          npm install
+          npm ci
           npm run build
-          mkdir dist
-          zip -r dist/candidus.zip . -x "node_modules/*" -x "dist/*" -x "src/*" -x "tsconfig.json" -x "webpack.config.js" -x "zip.sh" -x "test/*" -x .env
+
+      - name: Verify build output
+        run: |
+          cd content/themes/candidus
+          for file in \
+            package.json \
+            assets/built/shared.bundle.js \
+            assets/built/shared.css \
+            assets/built/index.bundle.js \
+            assets/built/index.css \
+            assets/built/page.bundle.js \
+            assets/built/slider.css \
+            assets/built/slider.bundle.js \
+            assets/built/tableOfContents.bundle.js \
+            assets/built/bookmarks.bundle.js \
+            assets/built/thirdparty/prism/prism.js \
+            assets/built/fonts ; do
+            if [ ! -e "$file" ]; then
+              echo "Build output is incomplete: missing $file"
+              exit 1
+            fi
+          done
+          echo "Build output verified."
+
+      - name: Package ZIP
+        run: |
+          cd content/themes/candidus
+          mkdir -p dist
+          zip -r dist/candidus.zip . \
+            -x "node_modules/*" \
+            -x "dist/*" \
+            -x "src/*" \
+            -x "test/*" \
+            -x "tsconfig.json" \
+            -x "webpack.config.js" \
+            -x "zip.sh" \
+            -x .env \
+            -x "package-lock.json" \
+            -x ".git/*"
+          # Fail if the archive contains symlinks, which Ghost rejects on upload
+          if zipinfo dist/candidus.zip | awk '$1 ~ /^l/ { found=1; print "Symlink entry: " $9 } END { exit found ? 1 : 0 }'; then
+            echo "ZIP contains no symlink entries."
+          else
+            echo "ZIP contains symlink entries - aborting"
+            exit 1
+          fi
 
       - name: Upload ZIP artifact
         uses: actions/upload-artifact@v4
